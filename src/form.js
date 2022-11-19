@@ -1,6 +1,6 @@
 const Form = () => {
   return (
-    <div className="pl-5">
+    <div className="pl-5 text-white opacity-75">
       <div class="name grid grid-rows-2  w-3/4">
         <span className="pb-2">
           <label>Name</label>
@@ -32,7 +32,7 @@ const Form = () => {
         <span className="pb-2"><label>Branch</label></span>
 
         <div>
-          <select className="opacity-75">
+          <select className=" text-black">
             <option value={"ece"}>ECE (T)</option>
             <option value={"mech"}>Mech (M)</option>
             <option value={"civil"}>Civil (C)</option>
@@ -62,23 +62,25 @@ const Form = () => {
           <span className="px-3"><input type={"radio"} value="4" name="year" />4</span>
         </div>
       </div>
-      <div class="adyear grid grid-rows-2 w-3/4">
-        <label>Admission Year</label>
+      <div class="ad-year grid grid-rows-2 w-3/4">
+        <span className="pb-2"><label>Admission Year</label></span>
 
         <select>{/* Year slider */}</select>
       </div>
       <div class="add-number grid grid-rows-2 w-3/4">
-        <label>Admission Number</label>
+        <span className="pb-2"><label>Admission Number</label></span>
 
         <input type={"number"} placeholder={"Addmission Number"}></input>
       </div>
       <div class="address grid grid-rows-2 w-3/4">
-        <lable>Address</lable>
+        <span className="pb-2">
+            <lable>Address</lable>
+        </span>
 
         <input type={"text"} placeholder={"Address"}></input>
       </div>
       <div class="sp-intrest grid grid-rows-2 w-3/4">
-        <label>Special Interests</label>
+        <span className="pb-2"><label>Special Interests</label></span>
         <be />
         <div className="form-check dropdown-item ">
           <select>
@@ -90,7 +92,7 @@ const Form = () => {
           </select>
         </div>
       </div>
-      <button className="bg-blue-500 rounded">Submit</button>
+      <div class="sub-btn flex justify-center py-10"><button className="bg-yellow-500 rounded-lg text-black font-bold px-3 py5">Submit</button></div>
     </div>
   );
 };
