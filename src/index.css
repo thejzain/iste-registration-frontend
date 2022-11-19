@@ -5,3 +5,7 @@
 .animate-spin{
     animation: spin 15s infinite linear;
 }
+
+.gray-bg{
+    background-color: #282D36;
+}

@@ -11,7 +11,7 @@ function App() {
         ISTE REGISTRATION
       </h1>
       <div class="relative ">
-        <div class="logo absolute pt-36"><img className="animate-spin  " src={logo}/></div>
+        <div class="logo absolute pt-36 opacity-30"><img className="animate-spin  " src={logo}/></div>
         <Form  />
       </div>
     </div>
