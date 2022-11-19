@@ -4,7 +4,7 @@ import logotxt from "./images/logo_txt(2).png"
 
 function App() {
   return (
-    <div className="relative"
+    <div className="relative px-52"
     style={{
       background:"#252525"
     }}>
