@@ -106,7 +106,7 @@ const Form = () => {
           <label>Admission Year</label>
         </span>
 
-        <select>{/* Year slider */}</select>
+        <input className="w-3/4 py-4 rounded-lg gray-bg "type={"date"}></input>
       </div>
       <div class="add-number grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3">
