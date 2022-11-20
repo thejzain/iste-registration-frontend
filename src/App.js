@@ -1,7 +1,7 @@
 import Form from "./form";
 import logo from "./images/logo.png"
 import logotxt from "./images/logo_txt(2).png"
-
+const backendurl = process.env.REACT_APP_BACKEND_URL
 function App() {
   return (
     <div className="relative xl:px-52"
@@ -14,11 +14,11 @@ function App() {
       <h1 className="text-center font-bold text-black text-4xl  pb-20 pt-6 ">
         ISTE REGISTRATION
       </h1>
-      <div class=" relative grid md:grid-cols-2">
-      
-        <div class="logo absolute  pt-36 opacity-30 "><img className="animate-spin w-5/6 md:w-100 " src={logo}/>
+      <div className=" relative grid md:grid-cols-2">
+      <div className="logo absolute min-h-screen grid place-items-center min-w-screen opacity-30 "><img className="animate-spin w-5/6 md:w-1/2 opacity-50" src={logo}/>
+        
         </div>
-        <Form  />
+        <Form  backendurl={backendurl}/>
         <div className=" px-7 lx:pl-0 text-center relative pb-16">
           <div className="border px-10 rounded-xl justify-center">
             <h2 className="  text-3xl font-bold text-center pt-10 xl:pt-10">ISTE</h2>
