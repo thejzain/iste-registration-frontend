@@ -295,19 +295,19 @@ const Form = ({backendurl}) => {
       </div>
       <div className="grid grid-rows-2  w-3/4 pb-7">
         <span className="pb-3"><label>Are You ISTE Member ?</label></span>
-        <div>
-          <select className="w-3/4 py-4 rounded-lg gray-bg">
-          <option value={"null"} disabled selected>choose option</option>
-          <option value={"yes"}>Yes</option>
-          <option value={"no"}>No</option>
-          </select>
+        <div className="grid grid-cols-2 w-2/4">
+          
+          
+          <div><input type={'radio'} className="radio" name='iste-member' value={"yes"}/>Yes</div>
+          <div><input type={'radio'} className="radio" name='iste-member' value={"no"}/>No</div>
+          
         </div>
       </div>
       <div className="grid grid-rows-2  w-3/4 pb-7">
         <span className="pb-3"><label>ISTE LEAP Membership</label></span>
         <div className="grid grid-cols-2 w-2/4">
-          <div><input type={"radio "} className={"radio"} name="leap" value={"yes"}/> Yes</div>
-          <div><input type={"radio "} className={"radio"} name="leap" value={"no"}/> No</div>
+          <div><input type={"radio"} className={"radio"} name="leap" value={"yes"}/> Yes</div>
+          <div><input type={"radio"} className={"radio"} name="leap" value={"no"}/> No</div>
         </div>
       </div>
       <div className="bg-[#2F366A] hover:font-bold rounded-md w-3/4 p-4 mb-4 grid place-items-center border">
