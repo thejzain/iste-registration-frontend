@@ -70,7 +70,12 @@ const Form = ({ backendurl }) => {
   useEffect(() => {
 
     state.specialinterests === "Other" ? setOpen(true) : setOpen(false)
-    if(state.istemember === "true" && state.leapmembership === "true"){setAmount("Rs 100")}
+    if(state.istemember === "true" && state.leapmembership === "true"){
+      setAmount("Rs 100")
+    }
+    else if(state.istemember === "true"){
+      setAmount("Rs 0")
+    }
 
     if (state.branch === "arch") {
       if (state.year === "1") {
@@ -308,7 +313,7 @@ const Form = ({ backendurl }) => {
           <div><input type={'radio'} className="radio" name='istemember' onChange={handleChange} value={true}/>Yes</div>
           <div><input type={'radio'} className="radio" name='istemember' onChange={handleChange} value={false}/>No</div>
 
-          
+         
         </div>
       </div>
       <div className="grid grid-rows-2  w-3/4 pb-7">
