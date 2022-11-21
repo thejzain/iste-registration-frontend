@@ -228,7 +228,7 @@ const Form = ({ backendurl }) => {
         <input
           className="input w-full max-w-xs"
           type={"number"}
-          placeholder={"Addmission Number"}
+          placeholder={"Admission Number"}
           name="admissionnumber"
           onChange={handleChange}
         ></input>
