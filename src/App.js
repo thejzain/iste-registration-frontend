@@ -15,7 +15,7 @@ function App() {
         <span className="text-4xl flex items-center justify-center">ISTE</span><span className="flex text-xl">MEMBERSHIP REGISTRATION</span> 
       </h1>
       <div className=" relative grid md:grid-cols-2 overflow-hidden">
-      <div className="logo absolute min-h-screen w-screen grid place-items-center min-w-screen opacity-30 "><img className="  animate-spin w-[300px] md:w-1/2 opacity-50" src={logo}/>
+      <div className=" logo absolute min-h-screen w-screen grid place-items-center min-w-screen opacity-30 "><img className="  animate-spin w-[300px] md:w-1/2 opacity-50" src={logo}/>
         
         </div>
         <Form  backendurl={backendurl}/>
