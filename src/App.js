@@ -8,8 +8,9 @@ function App() {
     style={{
       background:"#252525"
     }}>
-    <nav className="bg-nav pb-3">
+    <nav className="bg-nav pb-3 flex ">
       <div className="pt-4 pl-5 "><img src={logotxt} className="h-11"/></div>
+      
     </nav>
       <h1 className="text-center font-bold grid place-items-center border-b text-black mb-12 pb-4 pt-6 ">
         <span className="text-4xl flex items-center justify-center">ISTE</span><span className="flex text-xl">MEMBERSHIP DRIVE</span> 
