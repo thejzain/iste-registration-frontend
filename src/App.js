@@ -2,7 +2,7 @@ import Form from "./form";
 import logo from "./images/logo.png"
 import leap from "./images/leap.png"
 import logotxt from "./images/logo_txt(2).png"
-const backendurl = process.env.REACT_APP_BACKEND_URL
+const backendurl = "https://app.istetkmce.in"
 function App() {
   return (
     <div className="relative  background color"
