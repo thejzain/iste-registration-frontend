@@ -5,10 +5,8 @@ import logotxt from "./images/logo_txt(2).png"
 const backendurl = "https://app.istetkmce.in"
 function App() {
   return (
-    <div className="relative xl:px-52"
-    style={{
-      background:"#252525"
-    }}>
+    <div className="relative xl:px-52 background color"
+    >
     <nav className="bg-nav grid grid-cols-2">
       <div className="pt-4 pl-5 "><img src={logotxt} className="h-11"/></div>
       <div className="pr-4 flex justify-end"><img className="h-20" src={leap}/></div>

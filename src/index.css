@@ -13,3 +13,11 @@
 .bg-nav{
     background-color: #2c2e32;
 }
+
+.background{
+    background: rgb(41, 41, 41);
+}
+
+.color{
+    color: white;
+}
