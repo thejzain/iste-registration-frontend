@@ -65,7 +65,32 @@ const Form = ({backendurl}) => {
   useEffect(()=>{
 
     state.specialinterests==="Other"?setOpen(true):setOpen(false)
-  },[state.specialinterests])
+    if(state.branch === "arch"){
+      if(state.year === "1"){
+        setAmount("Rs 700")
+      }
+      else if(state.year === "2"){
+        setAmount("Rs 600")
+      }
+      else if(state.year === "3"){
+        setAmount("Rs 500")
+      }
+      else if(state.year === "4"){
+        setAmount("Rs 400")
+      }
+    }
+    else{
+      if(state.year === "1"){
+        setAmount("Rs 600")
+      }
+      else if(state.year === "2"){
+        setAmount("Rs 500")
+      }
+      else if(state.year === "3"){
+        setAmount("Rs 400")
+      }
+    }
+  },[state.specialinterests, state.year, state.branch])
 
 
   return (
@@ -164,7 +189,7 @@ const Form = ({backendurl}) => {
             <option value={"1"}>1</option>
             <option value={"2"}>2</option>
             <option value={"3"}>3</option>
-            <option value={"4"}>4</option>
+            {state.branch==="arch"?<option value={"4"}>4</option>:null}
           </select>
         </div>
       </div>
