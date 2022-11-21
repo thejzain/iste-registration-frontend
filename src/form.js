@@ -27,7 +27,7 @@ const Form = ({ backendurl }) => {
       promiseInProgress && (
         <>
           <br></br>
-          <progress className="progress progress-warning bg-black w-full md:w-full md:pr-4 my-6"></progress>
+          <progress className="progress progress-info bg-black w-full md:w-full md:pr-4 my-6"></progress>
           <br></br>
         </>
       )
