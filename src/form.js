@@ -294,7 +294,7 @@ const Form = ({backendurl}) => {
         </div>
       </div>
       <div className="grid grid-rows-2  w-3/4 pb-7">
-        <span className="pb-3"><label>Are You ISTE Member ?</label></span>
+        <span className="pb-7"><label>Are You ISTE Member ?</label></span>
         <div className="grid grid-cols-2 w-2/4">
           
           
@@ -304,7 +304,7 @@ const Form = ({backendurl}) => {
         </div>
       </div>
       <div className="grid grid-rows-2  w-3/4 pb-7">
-        <span className="pb-3"><label>ISTE LEAP Membership</label></span>
+        <span className="pb-7"><label>ISTE LEAP Membership</label></span>
         <div className="grid grid-cols-2 w-2/4">
           <div><input type={"radio"} className={"radio"} name="leap" value={"yes"}/> Yes</div>
           <div><input type={"radio"} className={"radio"} name="leap" value={"no"}/> No</div>
