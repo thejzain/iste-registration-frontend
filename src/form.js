@@ -298,8 +298,8 @@ const Form = ({backendurl}) => {
         <div className="grid grid-cols-2 w-2/4">
           
           
-          <div><input type={'radio'} className="radio" name='iste-member' value={"yes"}/>Yes</div>
-          <div><input type={'radio'} className="radio" name='iste-member' value={"no"}/>No</div>
+          <div><input type={'radio'} className="radio" name='iste-member' value={"yes"}/> Yes</div>
+          <div><input type={'radio'} className="radio" name='iste-member' value={"no"}/> No</div>
           
         </div>
       </div>
