@@ -1,9 +1,11 @@
 import { useState } from "react"
 import axios from "axios"
+import { toast } from "react-toastify";
+import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 const Form = ({backendurl}) => {
   const [file, setFile] = useState(null);
   const [state, setState] = useState({})
-  const [amount, setAmount] = useState("Rs. 400")
+  const [amount, setAmount] = useState("Rs. 600")
   function handleChange(evt) {
     const value = evt.target.value;
     console.log(state)
@@ -18,6 +20,18 @@ const Form = ({backendurl}) => {
     setFile(e.target.files[0])
 
   }
+  const LoadingIndicator = (props) => {
+    const { promiseInProgress } = usePromiseTracker();
+    return (
+      promiseInProgress && (
+        <>
+          <br></br>
+          <progress className="progress progress-warning bg-black w-full md:w-full md:pr-4 my-6"></progress>
+          <br></br>
+        </>
+      )
+    );
+  };
   const onSubmit = (event) => {
     const data = new FormData();
 
@@ -26,16 +40,21 @@ const Form = ({backendurl}) => {
 
     data.append('data', JSON.stringify(state))
     console.log("clicked", file)
-    axios.put(`${backendurl}/user`, data, { headers: { 'Content-Type': 'multipart/form-data' }, body: JSON.stringify(state) }).then(response => {
-      if (response.status === 200) {
+    trackPromise( axios.put(`${backendurl}/user`, data, { headers: { 'Content-Type': 'multipart/form-data' }, body: JSON.stringify(state) }).then(response => {
+      
+      if (response.data.status === 200) {
         console.log("success")
         console.log(response.message)
-
+        toast.success("User registered")
+      }
+      else if( response.data.status === 403){
+        toast.warning("Email already in use. Contact admin for assistance")
       }
       else {
         console.log("error")
+        toast.error("Couldn't register user. Contact admin for help")
       }
-    });
+    }))
 
 
     event.preventDefault();
@@ -195,7 +214,7 @@ const Form = ({backendurl}) => {
         </div>
       </div>
       <div className="career grid grid-rows-2 w-3/4 pb-7">
-        <span className="pb-3"><label>Career Preferance</label></span>
+        <span className="pb-3"><label>Career Preference</label></span>
         <div>
           <select className="w-3/4 py-4 rounded-lg gray-bg" name="careerpreference" onChange={handleChange}>
             <option value={"null"} disabled selected>choose option</option>
@@ -266,6 +285,8 @@ const Form = ({backendurl}) => {
       <div className="sub-btn flex justify-center py-10">
         <button type="submit" className="btn btn-normal bg-[#162173]">Submit</button>
       </div>
+      
+      <LoadingIndicator />
     </form>
   );
 };
