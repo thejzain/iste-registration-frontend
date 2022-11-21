@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 const Form = ({backendurl}) => {
   const [file, setFile] = useState(null);
   const [state, setState] = useState({})
+  const [other, setOther] = useState(false)
+  const [open, setOpen] = useState(false)
   const [amount, setAmount] = useState("Rs. 600")
   function handleChange(evt) {
     const value = evt.target.value;
@@ -60,7 +62,10 @@ const Form = ({backendurl}) => {
     event.preventDefault();
   }
 
+  useEffect(()=>{
 
+    state.specialinterests==="Other"?setOpen(true):setOpen(false)
+  },[state.specialinterests])
 
 
   return (
@@ -169,8 +174,15 @@ const Form = ({backendurl}) => {
         <span className="pb-3">
           <label>Admission Year</label>
         </span>
-
-        <input className="w-3/4 py-4 rounded-lg gray-bg " onChange={handleChange} name="admissionyear" type={"date"}></input>
+        <div className="form-check dropdown-item ">
+          <select className="w-3/4 py-4 rounded-lg gray-bg " name="admissionyear" onChange={handleChange}>
+            <option value={"null"} disabled selected>choose admission year</option>
+            <option value={"2019"}> 2019</option>
+            <option value={"2020"}> 2020</option>
+            <option value={"2021"}> 2021</option>
+            <option value={"2022"}> 2022</option>
+          </select>
+        </div>
       </div>
       <div className="add-number grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3">
@@ -203,7 +215,15 @@ const Form = ({backendurl}) => {
           <label>Special Interests</label>
         </span>
         <br />
-        <div className="form-check dropdown-item ">
+        { open===true? 
+           <input
+           className="input w-full max-w-xs"
+           type={"text"}
+           placeholder="special interests"
+           name="specialinterests"
+           onChange={handleChange}
+         ></input>
+        : <div className="form-check dropdown-item ">
           <select className="w-3/4 py-4 rounded-lg gray-bg " name="specialinterests" onChange={handleChange}>
             <option value={"null"} disabled selected>choose option</option>
             <option value={"Sports"}> Sports</option>
@@ -213,8 +233,9 @@ const Form = ({backendurl}) => {
             <option value={"Drama"}> Drama</option>
             <option value={"Music"}> Music</option>
             <option value={"Photography"}> Photography</option>
+            <option value={"Other"}>Other</option>
           </select>
-        </div>
+        </div>}
       </div>
       <div className="career grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3"><label>Career Preference</label></span>
