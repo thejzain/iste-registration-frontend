@@ -2,10 +2,9 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
-const Form = ({backendurl}) => {
+const Form = ({ backendurl }) => {
   const [file, setFile] = useState(null);
   const [state, setState] = useState({})
-  const [other, setOther] = useState(false)
   const [open, setOpen] = useState(false)
   const [amount, setAmount] = useState("Rs. 600")
   function handleChange(evt) {
@@ -34,63 +33,69 @@ const Form = ({backendurl}) => {
       )
     );
   };
+
   const onSubmit = (event) => {
-    const data = new FormData();
+    if (!state.name || !state.email || !state.phonenumber || !state.dob || !state.branch || !state.batch || !state.year || !state.admissionyear || !state.address || !state.specialinterests || !state.careerpreference || !state.typeofservice || !state.accholdersname || !state.transactionid || !file || !state.istemember || !state.leapmembership) {
+      toast.error("Fill all the fields to submit")
+    }
+    else {
+
+      const data = new FormData();
 
 
-    data.append('file', file);
+      data.append('file', file);
 
-    data.append('data', JSON.stringify(state))
-    console.log("clicked", file)
-    trackPromise( axios.put(`${backendurl}/user`, data, { headers: { 'Content-Type': 'multipart/form-data' }, body: JSON.stringify(state) }).then(response => {
-      
-      if (response.data.status === 200) {
-        console.log("success")
-        console.log(response.message)
-        toast.success("User registered")
-      }
-      else if( response.data.status === 403){
-        toast.warning("Email already in use. Contact admin for assistance")
-      }
-      else {
-        console.log("error")
-        toast.error("Couldn't register user. Contact admin for help")
-      }
-    }))
+      data.append('data', JSON.stringify(state))
+      console.log("clicked", file)
+      trackPromise(axios.put(`${backendurl}/user`, data, { headers: { 'Content-Type': 'multipart/form-data' }, body: JSON.stringify(state) }).then(response => {
 
+        if (response.data.status === 200) {
+          console.log("success")
+          console.log(response.message)
+          toast.success("User registered")
+        }
+        else if (response.data.status === 403) {
+          toast.warning("Email already in use. Contact admin for assistance")
+        }
+        else {
+          console.log("error")
+          toast.error("Couldn't register user. Contact admin for help")
+        }
+      }))
+    }
 
     event.preventDefault();
   }
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    state.specialinterests==="Other"?setOpen(true):setOpen(false)
-    if(state.branch === "arch"){
-      if(state.year === "1"){
+    state.specialinterests === "Other" ? setOpen(true) : setOpen(false)
+    if (state.branch === "arch") {
+      if (state.year === "1") {
         setAmount("Rs 700")
       }
-      else if(state.year === "2"){
+      else if (state.year === "2") {
         setAmount("Rs 600")
       }
-      else if(state.year === "3"){
+      else if (state.year === "3") {
         setAmount("Rs 500")
       }
-      else if(state.year === "4"){
+      else if (state.year === "4") {
         setAmount("Rs 400")
       }
     }
-    else{
-      if(state.year === "1"){
+    else {
+      if (state.year === "1") {
         setAmount("Rs 600")
       }
-      else if(state.year === "2"){
+      else if (state.year === "2") {
         setAmount("Rs 500")
       }
-      else if(state.year === "3"){
+      else if (state.year === "3") {
         setAmount("Rs 400")
       }
     }
-  },[state.specialinterests, state.year, state.branch])
+  }, [state.specialinterests, state.year, state.branch])
 
 
   return (
@@ -159,7 +164,7 @@ const Form = ({backendurl}) => {
             <option value={"chem"}>Chem(H)</option>
             <option value={"arch"} >Arch(A)</option>
             <option value={"mech-pro"}>Mech Pro</option>
-            <option value={"electrical&computer"}>Electrical and Computer Engineering </option>
+            <option value={"electrical&computer"}>ERE</option>
           </select>
         </div>
       </div>
@@ -189,7 +194,7 @@ const Form = ({backendurl}) => {
             <option value={"1"}>1</option>
             <option value={"2"}>2</option>
             <option value={"3"}>3</option>
-            {state.branch==="arch"?<option value={"4"}>4</option>:null}
+            {state.branch === "arch" ? <option value={"4"}>4</option> : null}
           </select>
         </div>
       </div>
@@ -239,27 +244,27 @@ const Form = ({backendurl}) => {
           <label>Special Interests</label>
         </span>
         <br />
-        { open===true? 
-           <input
-           className="input w-full max-w-xs"
-           type={"text"}
-           placeholder="special interests"
-           name="specialinterests"
-           onChange={handleChange}
-         ></input>
-        : <div className="form-check dropdown-item ">
-          <select className="w-3/4 py-4 rounded-lg gray-bg " name="specialinterests" onChange={handleChange}>
-            <option value={"null"} disabled selected>choose option</option>
-            <option value={"Sports"}> Sports</option>
-            <option value={"Games"}> Games</option>
-            <option value={"Reading"}> Reading</option>
-            <option value={"Literary"}> Literary</option>
-            <option value={"Drama"}> Drama</option>
-            <option value={"Music"}> Music</option>
-            <option value={"Photography"}> Photography</option>
-            <option value={"Other"}>Other</option>
-          </select>
-        </div>}
+        {open === true ?
+          <input
+            className="input w-full max-w-xs"
+            type={"text"}
+            placeholder="special interests"
+            name="specialinterests"
+            onChange={handleChange}
+          ></input>
+          : <div className="form-check dropdown-item ">
+            <select className="w-3/4 py-4 rounded-lg gray-bg " name="specialinterests" onChange={handleChange}>
+              <option value={"null"} disabled selected>choose option</option>
+              <option value={"Sports"}> Sports</option>
+              <option value={"Games"}> Games</option>
+              <option value={"Reading"}> Reading</option>
+              <option value={"Literary"}> Literary</option>
+              <option value={"Drama"}> Drama</option>
+              <option value={"Music"}> Music</option>
+              <option value={"Photography"}> Photography</option>
+              <option value={"Other"}>Other</option>
+            </select>
+          </div>}
       </div>
       <div className="career grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3"><label>Career Preference</label></span>
@@ -297,17 +302,17 @@ const Form = ({backendurl}) => {
         <span className="pb-3"><label>Are you already ISTE member ?</label></span>
         <div>
           <select className="w-3/4 py-4 rounded-lg gray-bg">
-          <option value={"null"} disabled selected>choose option</option>
-          <option value={"yes"}>Yes</option>
-          <option value={"no"}>No</option>
+            <option value={"null"} disabled selected>choose option</option>
+            <option value={"yes"}>Yes</option>
+            <option value={"no"}>No</option>
           </select>
         </div>
       </div>
       <div className="bg-[#2F366A] hover:font-bold rounded-md w-3/4 p-4 mb-4 grid place-items-center border">
-      <label className="">Amount</label>
-      <div className="bg-black hover:font-bold bg-opacity-50 rounded w-3/4 flex items-center justify-center">
-        {amount}
-      </div>
+        <label className="">Amount</label>
+        <div className="bg-black hover:font-bold bg-opacity-50 rounded w-3/4 flex items-center justify-center">
+          {amount}
+        </div>
       </div>
       <div className="acc-name grid grid-rows-2  w-3/4 pb-7">
         <span className="pb-3">
@@ -343,7 +348,7 @@ const Form = ({backendurl}) => {
       <div className="place-self-center sub-btn flex justify-center py-10">
         <button type="submit" className="btn btn-normal bg-[#162173]">Submit</button>
       </div>
-      
+
       <LoadingIndicator />
     </form>
   );
