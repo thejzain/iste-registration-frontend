@@ -5,7 +5,7 @@ import logotxt from "./images/logo_txt(2).png"
 const backendurl = process.env.REACT_APP_BACKEND_URL
 function App() {
   return (
-    <div className="relative xl:px-52 background color"
+    <div className="relative  background color"
     >
     <nav className="bg-nav grid grid-cols-2">
       <div className="pt-4 pl-5 "><img src={logotxt} className="h-11"/></div>
@@ -14,8 +14,8 @@ function App() {
       <h1 className="text-center font-bold grid place-items-center border-b text-black mb-12 pb-4 pt-6 ">
         <span className="text-4xl flex items-center justify-center">ISTE</span><span className="flex text-xl">MEMBERSHIP DRIVE</span> 
       </h1>
-      <div className=" relative grid md:grid-cols-2 overflow-hidden">
-      <div className=" logo absolute min-h-screen w-screen grid place-items-center min-w-screen opacity-30 "><img className="  animate-spin w-[300px] md:w-1/2 opacity-50" src={logo}/>
+      <div className=" relative grid md:grid-cols-2 overflow-hidden md:px-36">
+      <div className=" logo absolute min-h-screen w-screen grid place-items-center min-w-screen opacity-30"><img className="  animate-spin w-[300px] md:w-1/2 opacity-50" src={logo}/>
         
         </div>
         <Form  backendurl={backendurl}/>
