@@ -1,5 +1,6 @@
 import Form from "./form";
 import logo from "./images/logo.png"
+import leap from "./images/leap.png"
 import logotxt from "./images/logo_txt(2).png"
 const backendurl = process.env.REACT_APP_BACKEND_URL
 function App() {
@@ -8,9 +9,9 @@ function App() {
     style={{
       background:"#252525"
     }}>
-    <nav className="bg-nav pb-3 flex ">
+    <nav className="bg-nav grid grid-cols-2">
       <div className="pt-4 pl-5 "><img src={logotxt} className="h-11"/></div>
-      
+      <div className="pr-4 flex justify-end"><img className="h-20" src={leap}/></div>
     </nav>
       <h1 className="text-center font-bold grid place-items-center border-b text-black mb-12 pb-4 pt-6 ">
         <span className="text-4xl flex items-center justify-center">ISTE</span><span className="flex text-xl">MEMBERSHIP DRIVE</span> 
