@@ -6,7 +6,7 @@ const Form = ({ backendurl }) => {
   const [file, setFile] = useState(null);
   const [state, setState] = useState({})
   const [open, setOpen] = useState(false)
-  const [amount, setAmount] = useState("Rs. 600")
+  const [amount, setAmount] = useState(600)
   function handleChange(evt) {
     const value = evt.target.value;
     console.log(state)
@@ -70,51 +70,82 @@ const Form = ({ backendurl }) => {
   useEffect(() => {
 
     state.specialinterests === "Other" ? setOpen(true) : setOpen(false)
-    if(state.istemember === "true" && state.leapmembership === "true"){
-      setAmount("Rs 100")
-    }
-    else if(state.istemember === "true"){
-      setAmount("Rs 0")
-    }
+
 
     if (state.branch === "arch") {
-      if (state.year === "1") {
-        setAmount("Rs 700")
+      if (state.leapmembership === "true") {
+        if (state.year === "1") {
+          setAmount(700)
+        }
+        else if (state.year === "2") {
+          setAmount(500)
+        }
+        else if (state.year === "3") {
+          setAmount(400)
+        }
+        else if (state.year === "4") {
+          setAmount(300)
+        }
       }
-      else if (state.year === "2") {
-        setAmount("Rs 600")
-      }
-      else if (state.year === "3") {
-        setAmount("Rs 500")
-      }
-      else if (state.year === "4") {
-        setAmount("Rs 400")
+      else{
+        if (state.year === "1") {
+          setAmount(700)
+        }
+        else if (state.year === "2") {
+          setAmount(400)
+        }
+        else if (state.year === "3") {
+          setAmount(300)
+        }
+        else if (state.year === "4") {
+          setAmount(200)
+        }
       }
     }
     else {
-      if (state.year === "1") {
-        setAmount("Rs 600")
+      if (state.leapmembership === "true") {
+        if (state.year === "1") {
+          setAmount(600)
+        }
+        else if (state.year === "2") {
+          setAmount(400)
+        }
+        else if (state.year === "3") {
+          setAmount(300)
+        }
       }
-      else if (state.year === "2") {
-        setAmount("Rs 500")
+      else {
+        if (state.year === "1") {
+          setAmount(600)
+        }
+        else if (state.year === "2") {
+          setAmount(300)
+        }
+        else if (state.year === "3") {
+          setAmount(200)
+        }
       }
-      else if (state.year === "3") {
-        setAmount("Rs 400")
-      }
+
+    }
+    if (state.istemember === "true" && state.leapmembership === "true") {
+      setAmount(100)
+    }
+    else if (state.istemember === "true") {
+      setAmount(0)
     }
   }, [state.specialinterests, state.year, state.branch, state.istemember, state.leapmembership])
 
 
   return (
-    <form className="md:pl-10  grid place-items-start pl-5 text-white opacity-75 transition-all text-xl" onSubmit={onSubmit}>
+    <form className="md:pl-10  grid place-items-center pl-5 text-white transition-all text-xl" onSubmit={onSubmit}>
       <div className="name grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3">
           <label>Name</label>
         </span>
         <input
-          className="input w-full max-w-xs"
+          className="input bg-white w-full max-w-xs"
           type={"text"}
-          placeholder="Name"
+
           name="name"
           onChange={handleChange}
         ></input>
@@ -127,7 +158,7 @@ const Form = ({ backendurl }) => {
         <input
           className="input w-full max-w-xs"
           type={"email"}
-          placeholder="Email"
+
           name="email"
           onChange={handleChange}
         ></input>
@@ -140,7 +171,7 @@ const Form = ({ backendurl }) => {
         <input
           className="input w-full max-w-xs"
           type={"number"}
-          placeholder="Phone Number"
+
           name="phonenumber"
           onChange={handleChange}
         ></input>
@@ -228,7 +259,7 @@ const Form = ({ backendurl }) => {
         <input
           className="input w-full max-w-xs"
           type={"number"}
-          placeholder={"Addmission Number"}
+
           name="admissionnumber"
           onChange={handleChange}
         ></input>
@@ -241,7 +272,7 @@ const Form = ({ backendurl }) => {
         <input
           className="textarea"
           type={"text"}
-          placeholder={"Address"}
+
           name="address"
           onChange={handleChange}
         ></input>
@@ -308,61 +339,67 @@ const Form = ({ backendurl }) => {
       <div className="grid grid-rows-2  w-3/4 pb-7">
         <span className="pb-7"><label>Are You ISTE Member ?</label></span>
         <div className="grid grid-cols-2 w-2/4">
-          
-          
-          <div><input type={'radio'} className="radio" name='istemember' onChange={handleChange} value={true}/>Yes</div>
-          <div><input type={'radio'} className="radio" name='istemember' onChange={handleChange} value={false}/>No</div>
 
-         
+
+          <div><input type={'radio'} className="radio" name='istemember' onChange={handleChange} value={true} />Yes</div>
+          <div><input type={'radio'} className="radio" name='istemember' onChange={handleChange} value={false} />No</div>
+
+
         </div>
       </div>
       <div className="grid grid-rows-2  w-3/4 pb-7">
         <span className="pb-7"><label>ISTE LEAP Membership</label></span>
         <div className="grid grid-cols-2 w-2/4">
-          <div><input type={"radio"} className={"radio"} onChange={handleChange} name="leapmembership" value={true}/> Yes</div>
-          <div><input type={"radio"} className={"radio"} onChange={handleChange} name="leapmembership" value={false}/> No</div>
+          <div><input type={"radio"} className={"radio"} onChange={handleChange} name="leapmembership" value={true} /> Yes</div>
+          <div><input type={"radio"} className={"radio"} onChange={handleChange} name="leapmembership" value={false} /> No</div>
 
         </div>
       </div>
-      <div className="bg-[#2F366A] hover:font-bold rounded-md w-3/4 p-4 mb-4 grid place-items-center border">
+      <div className="bg-[#2F366A] hover:font-bold indicator rounded-md w-3/4 p-4 mb-4 grid place-items-center border shadow-xl">
+        <span className="indicator-item indicator-center badge badge-info"></span>
         <label className="">Amount</label>
         <div className="bg-black hover:font-bold bg-opacity-50 rounded w-3/4 flex items-center justify-center">
-          {amount}
+
+          <span className="flex gap-2"><span>Rs</span><span>{String(amount)}</span></span>
         </div>
       </div>
-      <div className="acc-name grid grid-rows-2  w-3/4 pb-7">
-        <span className="pb-3">
-          <label>Account Holders Name</label>
-        </span>
-        <input
-          className="input w-full max-w-xs"
-          type={"text"}
-          placeholder="Account Holders Name"
-          name="accholdersname"
-          onChange={handleChange}
-        ></input>
-      </div>
-      <div className="trans-id grid grid-rows-2  w-3/4 pb-7">
-        <span className="pb-3">
-          <label>Transaction ID</label>
-        </span>
-        <input
-          className="input w-full max-w-xs"
-          type={"number"}
-          placeholder="Transaction ID"
-          name="transactionid"
-          onChange={handleChange}
-        ></input>
-      </div>
-      <div className="ss grid grid-rows-2 w-3/4 pb-7">
-        <span className="pb-3">
-          <label>Screenshot</label>
-        </span>
-        <input type="file" name="file" onChange={handleFile} className="file-input file-input-bordered w-full max-w-xs" />
-      </div>
+      <div className="grid place-items-center bg-[#2F366A] rounded-md indicator border m-4 shadow-xl">
 
-      <div className="place-self-center sub-btn flex justify-center py-10">
-        <button type="submit" className="btn btn-normal bg-[#162173]">Submit</button>
+        <span className="indicator-item indicator-center badge badge-info"></span>
+        <div className="text-xl uppercase font-bold py-8">transaction details</div>
+        <div className="acc-name grid grid-rows-2  w-3/4 pb-7">
+          <span className="pb-3">
+            <label>Account Holders Name</label>
+          </span>
+          <input
+            className="input w-full max-w-xs"
+            type={"text"}
+
+            name="accholdersname"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="trans-id grid grid-rows-2  w-3/4 pb-7">
+          <span className="pb-3">
+            <label>Transaction ID</label>
+          </span>
+          <input
+            className="input w-full max-w-xs"
+            type={"number"}
+
+            name="transactionid"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <div className="ss grid grid-rows-2 w-3/4 pb-7">
+          <span className="pb-3">
+            <label>Screenshot</label>
+          </span>
+          <input type="file" name="file" onChange={handleFile} className="file-input file-input-bordered w-full max-w-xs" />
+        </div>
+      </div>
+      <div className="place-self-center flex justify-center py-10">
+        <button type="submit" className="btn btn-info btn-lg"><span className="text-white">Submit</span></button>
       </div>
 
       <LoadingIndicator />
