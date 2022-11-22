@@ -137,7 +137,7 @@ const Form = ({ backendurl }) => {
 
 
   return (
-    <form className="md:pl-10  grid place-items-center pl-5 text-white transition-all text-xl" onSubmit={onSubmit}>
+    <form className="md:pl-10 z-20 grid place-items-center pl-5 text-white transition-all text-xl" onSubmit={onSubmit}>
       <div className="name grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3">
           <label>Name</label>
@@ -156,7 +156,7 @@ const Form = ({ backendurl }) => {
         </span>
 
         <input
-          className="input w-full max-w-xs"
+          className="input w-full max-w-xs opacity-75 bg-white"
           type={"email"}
 
           name="email"
@@ -169,8 +169,8 @@ const Form = ({ backendurl }) => {
         </span>
 
         <input
-          className="input w-full max-w-xs"
-          type={"number"}
+          className="input w-full max-w-xs opacity-75 bg-white"
+          type={"text"}
 
           name="phonenumber"
           onChange={handleChange}
@@ -184,7 +184,7 @@ const Form = ({ backendurl }) => {
 
 
 
-        <input className="w-3/4 px-2 py-4 rounded-lg gray-bg " type={"date"} name="dob" onChange={handleChange}></input>
+        <input className="w-3/4 px-2 py-4 rounded-lg gray-bg opacity-75" type={"date"} name="dob" onChange={handleChange}></input>
       </div>
       <div className="branch grid grid-rows-2 w-3/4 pb-7 ">
         <span className="pb-3">
@@ -192,7 +192,7 @@ const Form = ({ backendurl }) => {
         </span>
 
         <div>
-          <select onChange={handleChange} name="branch" className="w-3/4 py-4 px-1 rounded-lg gray-bg">
+          <select onChange={handleChange} name="branch" className="w-3/4 py-4 px-1 rounded-lg gray-bg opacity-75">
             <option value={"null"} disabled selected >choose branch</option>
             <option value={"ece"}>ECE (T)</option>
             <option value={"mech"}>Mech (M)</option>
@@ -212,7 +212,7 @@ const Form = ({ backendurl }) => {
         </span>
 
         <div>
-          <select onChange={handleChange} name="batch" className="w-3/4 py-4 px-1 rounded-lg gray-bg">
+          <select onChange={handleChange} name="batch" className="w-3/4 py-4 px-1 rounded-lg gray-bg opacity-75">
             <option value={"null"} disabled selected>choose batch</option>
             <option value={"A"}>A</option>
             <option value={"B"}>B</option>
@@ -227,7 +227,7 @@ const Form = ({ backendurl }) => {
         </span>
 
         <div>
-          <select onChange={handleChange} name="year" className="w-3/4 py-4 rounded-lg gray-bg">
+          <select onChange={handleChange} name="year" className="w-3/4 py-4 rounded-lg gray-bg opacity-75">
             <option value={"null"} disabled selected>choose year</option>
             <option value={"1"}>1</option>
             <option value={"2"}>2</option>
@@ -242,7 +242,7 @@ const Form = ({ backendurl }) => {
           <label>Admission Year</label>
         </span>
         <div className="form-check dropdown-item ">
-          <select className="w-3/4 py-4 rounded-lg gray-bg " name="admissionyear" onChange={handleChange}>
+          <select className="w-3/4 py-4 rounded-lg gray-bg opacity-75 " name="admissionyear" onChange={handleChange}>
             <option value={"null"} disabled selected>choose admission year</option>
             <option value={"2019"}> 2019</option>
             <option value={"2020"}> 2020</option>
@@ -257,9 +257,8 @@ const Form = ({ backendurl }) => {
         </span>
 
         <input
-          className="input w-full max-w-xs"
+          className="input w-full max-w-xs opacity-75 bg-white"
           type={"number"}
-
           name="admissionnumber"
           onChange={handleChange}
         ></input>
@@ -284,14 +283,14 @@ const Form = ({ backendurl }) => {
         <br />
         {open === true ?
           <input
-            className="input w-full max-w-xs"
+            className="input w-full max-w-xs opacity-75 bg-white"
             type={"text"}
             placeholder="special interests"
             name="specialinterests"
             onChange={handleChange}
           ></input>
           : <div className="form-check dropdown-item ">
-            <select className="w-3/4 py-4 rounded-lg gray-bg " name="specialinterests" onChange={handleChange}>
+            <select className="w-3/4 py-4 rounded-lg gray-bg opacity-75 " name="specialinterests" onChange={handleChange}>
               <option value={"null"} disabled selected>choose option</option>
               <option value={"Sports"}> Sports</option>
               <option value={"Games"}> Games</option>
@@ -307,7 +306,7 @@ const Form = ({ backendurl }) => {
       <div className="career grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3"><label>Career Preference</label></span>
         <div>
-          <select className="w-3/4 py-4 rounded-lg gray-bg" name="careerpreference" onChange={handleChange}>
+          <select className="w-3/4 py-4 rounded-lg gray-bg opacity-75" name="careerpreference" onChange={handleChange}>
             <option value={"null"} disabled selected>choose option</option>
             <option value={"Teaching "}> Teaching </option>
             <option value={"Research"}> Research Work </option>
@@ -323,7 +322,7 @@ const Form = ({ backendurl }) => {
       <div className="service grid grid-rows-2 w-3/4 pb-7">
         <span className="pb-3"><label>Preferred Type Of Services</label></span>
         <div>
-          <select name="typeofservice" onChange={handleChange} className="w-3/4 py-4 rounded-lg gray-bg">
+          <select name="typeofservice" onChange={handleChange} className="w-3/4 py-4 rounded-lg gray-bg opacity-75">
             <option value={"null"} disabled selected>choose option</option>
             <option value={" Coaching for competitive examination, job interview "}> Coaching for competitive examination, job interview </option>
             <option value={" Supervisory and communication skill "}> Supervisory and communication skill </option>
@@ -372,7 +371,7 @@ const Form = ({ backendurl }) => {
             <label>Account Holders Name</label>
           </span>
           <input
-            className="input w-full max-w-xs"
+            className="input w-full max-w-xs opacity-75 bg-white"
             type={"text"}
 
             name="accholdersname"
@@ -384,7 +383,7 @@ const Form = ({ backendurl }) => {
             <label>Transaction ID</label>
           </span>
           <input
-            className="input w-full max-w-xs"
+            className="input w-full max-w-xs opacity-75 bg-white"
             type={"number"}
 
             name="transactionid"
