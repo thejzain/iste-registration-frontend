@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
+import qrcode from "./images/gpay.jpeg"
 const Form = ({ backendurl }) => {
   const [file, setFile] = useState(null);
   const [state, setState] = useState({})
@@ -35,7 +36,7 @@ const Form = ({ backendurl }) => {
   };
 
   const onSubmit = (event) => {
-    if (!state.name || !state.email || !state.phonenumber || !state.dob || !state.branch || !state.batch || !state.year || !state.admissionyear || !state.address || !state.specialinterests || !state.careerpreference || !state.typeofservice || !state.accholdersname || !state.transactionid || !file || !state.istemember || !state.leapmembership) {
+    if (!state.name || !state.email || !state.phonenumber || !state.dob || !state.branch || !state.batch || !state.year || !state.admissionyear || !state.address || !state.specialinterests || !state.careerpreference || !state.typeofservice || !state.accholdersname || !state.transactionid || !file || !state.istemember || !state.leapmembership ) {
       toast.error("Fill all the fields to submit")
     }
     else {
@@ -357,9 +358,22 @@ const Form = ({ backendurl }) => {
       <div className="bg-[#2F366A] hover:font-bold indicator rounded-md w-3/4 p-4 mb-4 grid place-items-center border shadow-xl">
         <span className="indicator-item indicator-center badge badge-info"></span>
         <label className="">Amount</label>
-        <div className="bg-black hover:font-bold bg-opacity-50 rounded w-3/4 flex items-center justify-center">
+        <div className="bg-black hover:font-bold bg-opacity-50 rounded w-3/4 grid text-center justify-center">
 
-          <span className="flex gap-2"><span>Rs</span><span>{String(amount)}</span></span>
+          <span className="pb-10 pt-7"><span>Rs</span><span>{String(amount)}</span></span>
+          <div><img src={qrcode}/></div>
+          <div className="acc-name grid grid-rows-2  w-3/4 pb-7 pt-5">
+          <span className="pb-1 text-start justify-start">
+            <label>UPI ID</label>
+          </span>
+          <input
+            className="input w-full max-w-xs opacity-75 bg-white"
+            type={"text"}
+
+            name="upiid"
+            onChange={handleChange}
+          ></input>
+        </div>
         </div>
       </div>
       <div className="grid place-items-center bg-[#2F366A] rounded-md indicator border m-4 shadow-xl">
